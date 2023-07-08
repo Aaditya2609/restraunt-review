@@ -10,7 +10,6 @@ function AddReviewModal({setShowModal,restrauntName}) {
         pp:"https://wallpapers-clan.com/wp-content/uploads/2023/01/chibi-anime-pfp-10.jpg"
     })
     const handleSubmit=()=>{
-        console.log(newRating)
         const temp=restraunts.map(item=>{
             if (item.name === restrauntName) {
                 return {
@@ -22,9 +21,10 @@ function AddReviewModal({setShowModal,restrauntName}) {
               } else {
                 return item;
               }
+        
         })
     setRestraunts(temp)
-    console.log(restraunts)
+    setShowModal(false)
     
     }
     const handleComment=(value)=>
