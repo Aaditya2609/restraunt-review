@@ -11,7 +11,7 @@ function Home() {
         const temp=restraunts?.filter(item=>item.cuisine_id===selectedCuisine)
         setSelectedCuisineRestraunts(temp);
 
-    },[selectedCuisine])
+    },[selectedCuisine,restraunts])
   return (
     <div>
         <h1 className='font-bold text-3xl mt-8'>Restraunt Review App</h1>

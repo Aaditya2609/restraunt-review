@@ -10,11 +10,18 @@ function Review() {
     const { restraunt } = useParams();
     const [selectedRestraunt, setSelectedRestraunt] = useState(restraunts.find(item => item.name === restraunt));
     const [showModal, setShowModal] = useState(false)
-    const { name, address, menu, ratings, averageRating } = selectedRestraunt
+    const [CalcAverageRating,setCalcAverageRating]=useState();
+    const { name, address, menu, ratings } = selectedRestraunt
     useEffect(() => {
         const temp = restraunts.find(item => item.name === restraunt)
         setSelectedRestraunt(temp)
-    }, [restraunts])
+    }, [restraunts,restraunt])
+    useEffect(()=>{
+        const avg=ratings.reduce((acc,cv)=>{
+            return acc+cv.rating
+        },0)
+        setCalcAverageRating((avg/ratings.length).toFixed(1))
+    },[ratings])
     return (
         <div className='flex flex-col items-center justify-center'>
 
@@ -29,7 +36,7 @@ function Review() {
                         </>
                     ))}</p>
                     <p className='font-semibold text-xl text-[rgba(0,0,0,0.6)] pl-12'>{address}</p>
-                    <p className='font-semibold text-xl text-[rgba(0,0,0,0.6)] pl-12'>Average Rating: {averageRating}</p>
+                    <p className='font-semibold text-xl text-[rgba(0,0,0,0.6)] pl-12'>Average Rating: {CalcAverageRating}</p>
                 </div>
                 <button className="text-xl bg-blue-500 hover:bg-transparent text-white font-semibold hover:text-blue-700  py-2 px-4 border border-transparent hover:border-blue-500  rounded cursor-pointer" onClick={()=>setShowModal(true)}>Add Review</button>
             </div>
@@ -40,7 +47,7 @@ function Review() {
                         <div>
                             <div className='flex items-center justify-between'>
                                 <div className='flex items-center gap-4 py-4'>
-                                    <img src={item.pp} className='h-12 w-12 rounded-full p- border-black border-2' />
+                                    <img src={item.pp} alt="pfp" className='h-12 w-12 rounded-full p- border-black border-2' />
                                     <p className='font-bold text-2xl'>{item.revName}</p>
                                 </div>
                                 <div className='flex items-center gap-2 bg-black px-3 text-[#ffe234] rounded-full'>

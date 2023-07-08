@@ -348,7 +348,7 @@ export function RestrauntProvider({children})
     const [cuisine,setCuisine]=useState(cuisineData)
     const [restraunts,setRestraunts]=useState(restrauntsData)
     return(
-        <RestrauntContext.Provider value={{cuisine,restraunts,setRestraunts}}>
+        <RestrauntContext.Provider value={{cuisine,restraunts,setRestraunts,setCuisine}}>
             {children}
         </RestrauntContext.Provider>
     )

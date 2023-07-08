@@ -4,7 +4,7 @@ import { RestrauntContext } from '../context/RestrauntContext'
 function AddReviewModal({setShowModal,restrauntName}) {
     const{restraunts,setRestraunts}=useContext(RestrauntContext)
     const [newRating,setNewRating]=useState({
-        rating:0,
+        rating:1,
         comment:"",
         revName:"Luffy",
         pp:"https://wallpapers-clan.com/wp-content/uploads/2023/01/chibi-anime-pfp-10.jpg"
