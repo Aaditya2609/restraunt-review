@@ -18,7 +18,6 @@ function Review() {
     }, [restraunts,restraunt])
     useEffect(()=>{
         const avg=ratings.reduce((acc,cv)=>{
-            console.log(cv)
             return acc+cv.rating
         },0)
         setCalcAverageRating((avg/ratings.length).toFixed(1))
