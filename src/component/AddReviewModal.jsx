@@ -35,7 +35,7 @@ function AddReviewModal({setShowModal,restrauntName}) {
     }
     const handleRating=(value)=>
     {
-        const tempRating={...newRating,rating:value}
+        const tempRating={...newRating,rating:parseInt(value)}
         setNewRating(tempRating);
 
     }
